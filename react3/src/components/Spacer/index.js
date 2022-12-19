@@ -1,4 +1,3 @@
-import { element } from 'prop-types';
 import React from 'react';
 
 const Spacer = ({ children, type = 'horizontal', size = 8, ...props }) => {
