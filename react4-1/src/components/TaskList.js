@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useTasks } from '../contexts/TaskProvider';
 import Task from './Task';
 
 const UnorderedList = styled.div`
@@ -14,11 +15,17 @@ const UnorderedList = styled.div`
 `;
 
 const TaskList = (props) => {
+  const { tasks } = useTasks();
   return (
-    <UnorderedList>
-      <Task content='Test' />
-      <Task content='Test' />
-      <Task content='Test' />
+    <UnorderedList {...props}>
+      {tasks.map((item) => (
+        <Task
+          key={item.id}
+          id={item.id}
+          content={item.content}
+          complete={item.complete}
+        />
+      ))}
     </UnorderedList>
   );
 };
