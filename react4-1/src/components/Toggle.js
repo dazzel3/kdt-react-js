@@ -53,7 +53,7 @@ const ToggleInput = styled.input`
 const Toggle = ({ name, on = false, disabled, onChange, ...props }) => {
   const [checked, toggle] = useToggle(on);
 
-  const handleChange = (e) => {
+  const handleChange = () => {
     toggle();
     onChange && onChange();
   };

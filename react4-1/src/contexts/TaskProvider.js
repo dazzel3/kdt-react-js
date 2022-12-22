@@ -1,21 +1,22 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { v4 } from 'uuid';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const TaskContent = createContext();
 
 export const useTasks = () => useContext(TaskContent);
 
 const TaskProvider = ({ children }) => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage('tasks', []);
 
   const addTask = (content) => {
     setTasks([...tasks, { id: v4(), content, complete: false }]);
   };
 
-  const updateTask = (id, status) => {
+  const updateTask = (id) => {
     setTasks(
       tasks.map((item) =>
-        item.id === id ? { ...item, complete: status } : item
+        item.id === id ? { ...item, complete: !item.complete } : item
       )
     );
   };
