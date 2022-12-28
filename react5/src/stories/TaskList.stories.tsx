@@ -1,5 +1,4 @@
 import TaskList from '../components/TaskList';
-import TaskProvider from '../contexts/TaskProvider';
 
 export default {
   title: 'Component/TaskList',
@@ -7,9 +6,5 @@ export default {
 };
 
 export const Default = () => {
-  return (
-    <TaskProvider>
-      <TaskList />
-    </TaskProvider>
-  );
+  return <TaskList />;
 };
